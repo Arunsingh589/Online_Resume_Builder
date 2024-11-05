@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body::-webkit-scrollbar {
+    display: none
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 5px;
+    display: inline-block;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #fcf9f95d;
+    background-image: linear-gradient(315deg, #161717);
+    border: none;
+    z-index: 1;
+}
+
+.btn-primary::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 5px;
+    background-color: #1A91F0;
+    background-image: linear-gradient(315deg, #1A91F0 0%, #96e4df 74%);
+    box-shadow: -7px -7px 20px 0px #ff9,
+        -4px -4px 5px 0px #ff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    color: #fff;
+}
+
+.btn-primary:hover::after {
+    top: 0;
+    height: 100%;
+}
+
+.btn-primary:active {
+    top: 2px;
+}
+
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #resume-template,
+    #resume-template * {
+        visibility: visible;
+    }
+
+    #resume-template {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /* Ensure the section takes the full width */
+        margin: 0;
+        /* Remove any default margin */
+        padding: 0;
+        /* Remove padding if needed */
+    }
+
+    .print-button {
+        display: none;
+        /* Hide the print button */
+    }
+}
+
+
+/* #resume-template, #resume-template * {
+    box-sizing: border-box;
+} */
