@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Certificate = ({ certificates = [], handleCertificatesChange }) => {
+const Certificate = ({ certificates = [], handleCertificatesChange, errors }) => {
 
     const handleInputChange = (index, field, value) => {
         const updatedCertificate = [...certificates];
@@ -38,6 +38,10 @@ const Certificate = ({ certificates = [], handleCertificatesChange }) => {
                                             onChange={(e) => handleInputChange(index, 'certificatename', e.target.value)}
                                             placeholder='e.g. certificate in javascript'
                                             className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
+                                        {errors.certificates && errors.certificates[index]?.certificatename && (
+                                            <span className="text-red-500 text-sm">{errors.certificates[index].certificatename}</span>
+                                        )}
+
 
                                     </div>
                                     <div className='mb-10'>
@@ -47,7 +51,9 @@ const Certificate = ({ certificates = [], handleCertificatesChange }) => {
                                             onChange={(e) => handleInputChange(index, 'certificatelink', e.target.value)}
                                             placeholder='e.g. link'
                                             className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.certificates && errors.certificates[index]?.certificatelink && (
+                                            <span className="text-red-500 text-sm">{errors.certificates[index].certificatelink}</span>
+                                        )}
                                     </div>
 
                                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Education = ({ educations = [], handleEducationsChange }) => {
+const Education = ({ educations = [], handleEducationsChange, errors }) => {
 
 
 
@@ -37,30 +37,37 @@ const Education = ({ educations = [], handleEducationsChange }) => {
                                     <div className='mb-2'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>School</label>
                                         <input type="text"
-                                            value={education.title}
+                                            value={education.school}
                                             onChange={(e) => handleInputChange(index, 'school', e.target.value)}
                                             placeholder='e.g. school'
                                             className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
+                                        {errors.educations && errors.educations[index]?.school && (
+                                            <span className="text-red-500 text-sm">{errors.educations[index].school}</span>
+                                        )}
 
                                     </div>
                                     <div className='mb-2'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Degree</label>
                                         <input type="text"
-                                            value={education.company}
+                                            value={education.degree}
                                             onChange={(e) => handleInputChange(index, 'degree', e.target.value)}
                                             placeholder='e.g. degree'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.educations && errors.educations[index]?.degree && (
+                                            <span className="text-red-500 text-sm">{errors.educations[index].degree}</span>
+                                        )}
                                     </div>
                                     <div className='mb-2'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>City</label>
                                         <input type="text"
-                                            value={education.location}
+                                            value={education.city}
                                             onChange={(e) => handleInputChange(index, 'city', e.target.value)}
 
                                             placeholder='e.g. Faridabad'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.educations && errors.educations[index]?.city && (
+                                            <span className="text-red-500 text-sm">{errors.educations[index].city}</span>
+                                        )}
                                     </div>
                                     <div className='mb-10'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Start Date</label>
@@ -85,7 +92,9 @@ const Education = ({ educations = [], handleEducationsChange }) => {
                                             onChange={(e) => handleInputChange(index, 'description', e.target.value)}
                                             placeholder='e.g. description'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
-
+                                        {errors.educations && errors.educations[index]?.description && (
+                                            <span className="text-red-500 text-sm">{errors.educations[index].description}</span>
+                                        )}
                                     </div>
 
                                 </div>

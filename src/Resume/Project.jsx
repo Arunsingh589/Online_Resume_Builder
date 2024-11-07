@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Project = ({ projects = [], handleProjectsChange }) => {
+const Project = ({ projects = [], handleProjectsChange, errors }) => {
 
     const handleInputChange = (index, field, value) => {
         const updatedProject = [...projects];
@@ -39,7 +39,9 @@ const Project = ({ projects = [], handleProjectsChange }) => {
                                             onChange={(e) => handleInputChange(index, 'projectname', e.target.value)}
                                             placeholder='e.g. project name'
                                             className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.projects && errors.projects[index]?.projectname && (
+                                            <span className="text-red-500 text-sm">{errors.projects[index].projectname}</span>
+                                        )}
                                     </div>
                                     <div className='mb-10'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Project Link</label>
@@ -48,17 +50,20 @@ const Project = ({ projects = [], handleProjectsChange }) => {
                                             onChange={(e) => handleInputChange(index, 'projectlink', e.target.value)}
                                             placeholder='e.g. link'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.projects && errors.projects[index]?.projectlink && (
+                                            <span className="text-red-500 text-sm">{errors.projects[index].projectlink}</span>
+                                        )}
                                     </div>
                                     <div className='mb-10'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Description</label>
                                         <input type="text"
                                             value={project.description}
                                             onChange={(e) => handleInputChange(index, 'description', e.target.value)}
-
                                             placeholder='e.g. description'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.projects && errors.projects[index]?.description && (
+                                            <span className="text-red-500 text-sm">{errors.projects[index].description}</span>
+                                        )}
                                     </div>
 
                                 </div>

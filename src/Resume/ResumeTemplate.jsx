@@ -183,16 +183,6 @@ const ResumeTemplate = ({
                                     ))}
                                 </div>
                             </div>
-
-
-
-                            {/* {["achievements", "educations", "experiences", "projects", "certificates"].map((section) => (
-                                <div key={section} className="py-4 mb-4">
-                                    <h3 className="uppercase tracking-wider border-b font-bold text-sm sm:text-md md:text-lg border-black/10 pb-1 md:pb-2">
-                                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                                    </h3>
-                                </div>
-                            ))} */}
                         </div>
                     </div>
                 </div>

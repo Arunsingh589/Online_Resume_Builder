@@ -23,8 +23,36 @@ const ResumeBuilder = () => {
         educations: [{ school: '', degree: '', city: '', startDate: '', endDate: '', description: '' }],
         experiences: [{ title: '', company: '', location: '', startDate: '', endDate: '', description: '' }],
         projects: [{ projectname: '', projectlink: '', description: '' }],
-        certificates: [{ certificatename: '', certificatelink: '' }]
+        certificates: [{ certificatename: '', certificatelink: '' }],
+        errors: {}
     });
+
+
+    // for validation
+    const validateField = (name, value) => {
+        setResumeData((prevData) => {
+            const newErrors = { ...prevData.errors };
+
+            // If name corresponds to an array field
+            if (Array.isArray(value)) {
+                newErrors[name] = value.map((item, index) => {
+                    const errorsForItem = {};
+                    for (const [key, val] of Object.entries(item)) {
+                        errorsForItem[key] = val ? '' : `${key} is invalid`;
+                    }
+                    return errorsForItem;
+                });
+            } else {
+                newErrors[name] = value ? '' : `${name} is invalid`;
+            }
+
+            return {
+                ...prevData,
+                errors: newErrors,
+            };
+        });
+    };
+
 
     // for about
     const handleChange = (e) => {
@@ -33,6 +61,7 @@ const ResumeBuilder = () => {
             ...prevData,
             [name]: type === 'file' ? files[0] : value,
         }));
+        validateField(name, type === 'file' ? files[0] : value);
     };
 
     // for skill 
@@ -41,6 +70,7 @@ const ResumeBuilder = () => {
             ...prevData,
             skills: updatedSkills, // Update the skills in resumeData
         }));
+        validateField("skills", updatedSkills);
     };
 
     // for achievements
@@ -49,6 +79,7 @@ const ResumeBuilder = () => {
             ...prevData,
             achievements: updatedAchievements, // Update the skills in resumeData
         }));
+        validateField("achievements", updatedAchievements)
     };
 
     // for educations 
@@ -57,6 +88,7 @@ const ResumeBuilder = () => {
             ...prevData,
             educations: updatedEducations, // Update the skills in resumeData
         }));
+        validateField("educations", updatedEducations)
     };
 
     // for experience
@@ -66,6 +98,7 @@ const ResumeBuilder = () => {
             ...prevData,
             experiences: updatedExperiences, // Update the skills in resumeData
         }));
+        validateField("experiences", updatedExperiences)
     };
 
     // for project
@@ -74,6 +107,7 @@ const ResumeBuilder = () => {
             ...prevData,
             projects: updatedProjects, // Update the skills in resumeData
         }));
+        validateField("projects", updatedProjects)
     };
 
     // for certificates
@@ -83,6 +117,7 @@ const ResumeBuilder = () => {
             ...prevData,
             certificates: updatedCertificates, // Update the skills in resumeData
         }));
+        validateField("certificates", updatedCertificates)
     };
 
     // console.log('Resume Data:', resumeData); // Log resume data for debugging
@@ -92,32 +127,44 @@ const ResumeBuilder = () => {
             <About
                 {...resumeData} // Spread operator to pass state as props
                 handleChange={handleChange} // Pass handleChange function
+                errors={resumeData.errors}
             />
             <Education
                 {...resumeData}
                 handleEducationsChange={handleEducationsChange}
+                errors={resumeData.errors}
 
             />
             <Experience
                 {...resumeData}
                 handleExperiencesChange={handleExperiencesChange}
+                errors={resumeData.errors}
+
             />
             <Achievements
                 {...resumeData}
                 handleAchievementsChange={handleAchievementsChange}
+                errors={resumeData.errors}
+
             />
 
             <Project
                 {...resumeData}
                 handleProjectsChange={handleProjectsChange}
+                errors={resumeData.errors}
+
             />
             <Skill
                 skills={resumeData.skills} // Pass the skills array as a prop
                 handleSkillsChange={handleSkillsChange} // Pass handleSkillsChange function
+                errors={resumeData.errors}
+
             />
             <Certificate
                 {...resumeData}
                 handleCertificatesChange={handleCertificatesChange}
+                errors={resumeData.errors}
+
             />
             <ResumeTemplate
                 {...resumeData} // Spread operator to pass state as props

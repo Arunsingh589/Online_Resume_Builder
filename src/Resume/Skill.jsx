@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Skill = ({ skills = [], handleSkillsChange }) => {
+const Skill = ({ skills = [], handleSkillsChange, errors }) => {
     // Ensure there is at least one skill input field
     const handleInputChange = (index, value) => {
         const updatedSkills = [...skills];
@@ -36,6 +36,9 @@ const Skill = ({ skills = [], handleSkillsChange }) => {
                                         placeholder='e.g. java, python'
                                         className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all'
                                     />
+                                    {errors.skills && errors.skills[index]?.skill && (
+                                        <span className="text-red-500 text-sm">{errors.skills[index].skill}</span>
+                                    )}
                                 </div>
                             </div>
                             {index > 0 && ( // Show remove button for fields other than the first

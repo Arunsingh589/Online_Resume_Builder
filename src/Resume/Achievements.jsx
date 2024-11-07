@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Achievements = ({ achievements = [], handleAchievementsChange }) => {
+const Achievements = ({ achievements = [], handleAchievementsChange, errors }) => {
 
     const handleInputChange = (index, field, value) => {
         const updatedAchievements = [...achievements];
@@ -42,6 +42,10 @@ const Achievements = ({ achievements = [], handleAchievementsChange }) => {
                                         onChange={(e) => handleInputChange(index, 'title', e.target.value)}
                                         className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all'
                                     />
+                                    {errors.achievements && errors.achievements[index]?.title && (
+                                        <span className="text-red-500 text-sm">{errors.achievements[index].title}</span>
+                                    )}
+
                                 </div>
                                 <div className='mb-7'>
                                     <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Description</label>
@@ -52,6 +56,10 @@ const Achievements = ({ achievements = [], handleAchievementsChange }) => {
                                         onChange={(e) => handleInputChange(index, 'description', e.target.value)}
                                         className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all'
                                     />
+                                    {errors.achievements && errors.achievements[index]?.description && (
+                                        <span className="text-red-500 text-sm">{errors.achievements[index].description}</span>
+                                    )}
+
                                 </div>
                             </div>
                             {/* Remove button positioned at the top-right corner */}

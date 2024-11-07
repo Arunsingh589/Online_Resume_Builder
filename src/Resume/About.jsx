@@ -1,6 +1,6 @@
 import React from 'react'
 
-const About = ({ firstName, middleName, lastName, designation, address, email, phone, summary, handleChange }) => {
+const About = ({ firstName, middleName, lastName, designation, address, email, phone, summary, handleChange, errors }) => {
     return (
         <section className='pt-8'>
             <div className='mx-auto max-w-[1300px] px-4 sm:px-8 pt-6'>
@@ -18,6 +18,7 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     value={firstName}
                                     onChange={handleChange}
                                     className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
+                                {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
 
                             </div>
                             <div className='mb-2'>
@@ -38,6 +39,7 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     onChange={handleChange}
                                     placeholder='e.g. Thakur'
                                     className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
+                                {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
 
                             </div>
                             <div className='mb-2'>
@@ -57,6 +59,7 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     onChange={handleChange}
                                     placeholder='e.g. Web Developer'
                                     className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
+                                {errors.designation && <p className="text-red-500 text-sm">{errors.designation}</p>}
 
                             </div>
                             <div className='mb-2 relative'>
@@ -67,6 +70,7 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     onChange={handleChange}
                                     placeholder='e.g. City Park'
                                     className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
+                                {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
 
                             </div>
                             <div className='mb-10 relative'>
@@ -77,6 +81,7 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     onChange={handleChange}
                                     placeholder='e.g. abc@gmail.com'
                                     className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
+                                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
                             </div>
                             <div className='mb-10 relative'>
@@ -95,9 +100,9 @@ const About = ({ firstName, middleName, lastName, designation, address, email, p
                                     name="summary"
                                     value={summary}
                                     onChange={handleChange}
-
                                     placeholder='e.g. Summary'
                                     className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
+                                {errors.summary && <p className="text-red-500 text-sm">{errors.summary}</p>}
 
                             </div>
 

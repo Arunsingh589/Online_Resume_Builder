@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Experience = ({ experiences = [], handleExperiencesChange }) => {
+const Experience = ({ experiences = [], handleExperiencesChange, errors }) => {
 
 
     const handleInputChange = (index, field, value) => {
@@ -39,7 +39,9 @@ const Experience = ({ experiences = [], handleExperiencesChange }) => {
                                             onChange={(e) => handleInputChange(index, 'title', e.target.value)}
                                             placeholder='e.g. title'
                                             className='border focus:border-[rgba(0,0,0,0.3)] border-black/10 text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.experiences && errors.experiences[index]?.title && (
+                                            <span className="text-red-500 text-sm">{errors.experiences[index].title}</span>
+                                        )}
                                     </div>
                                     <div className='mb-2'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Company / Organization</label>
@@ -48,7 +50,9 @@ const Experience = ({ experiences = [], handleExperiencesChange }) => {
                                             onChange={(e) => handleInputChange(index, 'company', e.target.value)}
                                             placeholder='e.g. company'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.experiences && errors.experiences[index]?.company && (
+                                            <span className="text-red-500 text-sm">{errors.experiences[index].company}</span>
+                                        )}
                                     </div>
                                     <div className='mb-2'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Location</label>
@@ -58,7 +62,9 @@ const Experience = ({ experiences = [], handleExperiencesChange }) => {
 
                                             placeholder='e.g. city park'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm py-2 px-4 w-full outline-none transition-all' />
-
+                                        {errors.experiences && errors.experiences[index]?.location && (
+                                            <span className="text-red-500 text-sm">{errors.experiences[index].location}</span>
+                                        )}
                                     </div>
                                     <div className='mb-10'>
                                         <label className='block font-semibold text-base mb-1 text-[#1e2532]'>Start Date</label>
@@ -83,7 +89,9 @@ const Experience = ({ experiences = [], handleExperiencesChange }) => {
                                             onChange={(e) => handleInputChange(index, 'description', e.target.value)}
                                             placeholder='e.g. description'
                                             className='border border-black/10 focus:border-[rgba(0,0,0,0.3)] text-sm px-4 py-2 w-full outline-none transition-all' />
-
+                                        {errors.experiences && errors.experiences[index]?.description && (
+                                            <span className="text-red-500 text-sm">{errors.experiences[index].description}</span>
+                                        )}
                                     </div>
 
                                 </div>
